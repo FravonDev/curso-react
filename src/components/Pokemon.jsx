@@ -1,3 +1,3 @@
-export const Pokemon = () => {
-  return <h1>Nome do pokemon: pikachu</h1>;
+export const Pokemon = ({name = 'pikachu' }) => {
+  return <h1>Nome do pokemon: {name}</h1>;
 }
