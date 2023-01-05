@@ -1,5 +1,4 @@
 # ⚛React Learning⚛
-
 Sempre que vou aprender uma tecnologia, faço algumas perguntas!
 
 **O que é o React??**
@@ -169,6 +168,92 @@ se for uma função usamos a extensão **js,** ficando **: AlgumaFuncao.js**
 queremos passar o nome de cada pokemon
 
 o que vai nos ajudar com isso são as **Props**
+
+Assim como a tag img tem o atributo **src** <Img src=””>
+
+podemos criar nossos próprios atributos em nossos components, como nome do pokemon usando props.
+
+```jsx
+import { Pokemon } from "../components/Pokemon";
+
+export const Home = () => {
+  return (
+      <div>
+        <h1>Meu site de pokemon</h1>
+        <Pokemon name="Charmander"/>
+      </div>
+  );
+}
+```
+
+Agora nosso pokemon está enviando **props**, agora precisamos usa-la no pokemon component
+
+```jsx
+export const Pokemon = (props) => {
+  return <h1>Nome do pokemon: {props.name}</h1>;
+}
+```
+
+ 
+
+se quisermos usar apenas name ao invés de props.name, usamos destructuring
+
+```
+export const Pokemon = ({name}) => {
+  return <h1>Nome do pokemon: {name}</h1>;
+}
+```
+
+Caso não tenhamos um pokemon, podemos usar ternário
+
+```jsx
+export const Pokemon = ({name}) => {
+  return <h1>Nome do pokemon: {name ? name : 'Pikachu'}</h1>;
+}
+```
+
+Além disso, Não vamos renderizar só1 Pokémon, nós vamos renderizar vários !
+
+**Estilização no React**
+
+Primeiramente vamos aprender o **Css raiz** e logo depois vamos usar frameworks
+
+ podemos simplismente criar um arquivo css e  importar ele:
+
+```jsx
+import "./styles.css"
+
+export const Pokemon = ({name = 'pikachu' }) => {
+  return <h1 className="title">Nome do pokemon: {name}</h1>;
+}
+```
+
+Ou podemos usar **módulos** 
+
+No css raiz não podemos ter nomes repetidos, senão vamos sobrepor os estilos
+
+Mas com módulos podemos ter 300 titles, que não teremos problemas, pois ele mesmo irá trocar o nome do arquivo, nome da classe e adicionará um hash aleatório.
+
+Mais vantagens de usar módulos:
+
+- Isolamento de estilo: Quando isolamos o estilo de um component, evitamos conflitos de estilo e torna o código mais fácil de entender
+- Reutilização: é mais fácil **reutilizar** Componentes com **módulos CSS**
+- performance: os módulos são carregados de forma dinâmica e só são incluidos na pagina quando são realmente necessários
+- Manutenção: fica mais fácil manter o código com módulos CSS, pois o estilo está junto com o componente o compon. Isso também torna mais fácil para outros desenvolvedores entender como o estilo está sendo aplicado e fazer alterações se necessário
+
+```jsx
+import styles from './styles.module.css';
+
+export const Pokemon = ({name = 'pikachu' }) => {
+  return <h1 className={styles.title}>Nome do pokemon: {name}</h1>;
+}
+```
+
+Vamos criar uma pasta para cada component, por exemplo, Criaremos uma pasta chamada  Pokemon
+
+depois vamos renomear os arquivos dela,  para **Index.**
+
+assim quando formos importar nosso component, só precisamos mostrar  a pasta e depois  ele vai procurar **automagicamente** o arquivo index com isso o import ficará um pouco menor!
 
 Assim como a tag img tem o atributo **src** <Img src=””>
 
