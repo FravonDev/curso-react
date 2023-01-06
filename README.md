@@ -1,4 +1,4 @@
-# ⚛React Learning⚛
+# ⚛Aprendendo sobre react⚛
 Sempre que vou aprender uma tecnologia, faço algumas perguntas!
 
 **O que é o React??**
